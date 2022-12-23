@@ -1,0 +1,50 @@
+/* $button-color-blue: #0057D2; 
+$button-hover-color: #D1EFFF;
+$button-color-red: #D20A0A; 
+$text-color-gray: #d0d0d0; 
+$button-color-gray: #212121;  */
+
+
+.menu {
+    display: grid;
+    grid-template-columns: 175px 175px;
+    height: 350px;
+    width: 350px;
+    border: 2px solid rgb(0, 0, 0);
+    
+    border-radius: 25px;
+    margin-bottom: 20px;
+
+}
+
+.menu .nav-links {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px 20px 10px;
+    
+}
+
+.menu .nav-links header, .cover-flow, .music, .games, .settings {
+    padding-left: 10px;
+    border-radius: 15px;
+    margin: 5px;
+}
+
+.menu .nav-links header {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+
+.menu .right-display {
+    display: flex;
+    background-image: url('https://images.unsplash.com/photo-1620121692029-d088224ddc74?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXBwbGUlMjB3YWxscGFwZXJ8ZW58MHx8MHx8&w=1000&q=80');
+    background-size: cover;
+    border-radius: 0 25px 25px 0;
+
+}
+
+.active {
+    background-color: #0057D2;
+}
+

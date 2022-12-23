@@ -1,0 +1,74 @@
+
+
+.ipod {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+
+
+.ipod-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  border: 2px solid;
+  border-radius: 35px;
+  padding: 20px;
+  
+}
+
+
+.ipod-container .wheel {
+  
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  background-color: #61dafb;
+}
+
+.ipod-container .wheel .inner-div {
+  display: flex;
+  position: absolute;
+  z-index: 2;
+  height: 100px;
+  width: 100px;
+  margin-left: 50px;
+  margin-top: 45px;
+  
+  border-radius: 50%;
+  background-color: #faf9f9;
+}
+
+.ipod-container .buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  height: 100%;
+}
+
+.ipod-container .menu-button {
+  align-self: flex-start;
+  grid-area: 1 / 2;
+}
+
+.ipod-container .forward-button {
+  justify-self: flex-end;
+  margin-right: 10px;
+  grid-area: 2 / 3;
+}
+
+.ipod-container .backward-button {
+  justify-self: flex-start;
+  margin-left: 10px;
+  grid-area: 2;
+
+}
+
+.ipod-container .pause-button {
+  grid-area: 3 / 2;
+}
