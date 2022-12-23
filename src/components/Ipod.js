@@ -14,6 +14,10 @@ class Ipod extends React.Component {
 
     constructor() {
         super();
+        this.state = {
+            navigationActive: 'music',
+            prevAngle: -1
+        }
     }
 
     componentDidMount() {
@@ -22,26 +26,38 @@ class Ipod extends React.Component {
 
         let wheel = document.querySelector('.wheel');
         activeRegion.bind(wheel, 'rotate', function(event) {
-            console.log(event.detail.distanceFromOrigin);
+            console.log(event.detail);
             console.log();
 
             // let angleChanged = event.detail.angle - event.detail.distanceFromLast;
-            if (Math.floor(event.detail.distanceFromOrigin) % 15 === 0) {
+            let angle = Math.floor(event.detail.distanceFromOrigin);
+            let prevAngle = this.state.prevAngle;
+            if (angle % 15 === 0 && angle != 0 && prevAngle != angle) {
                 console.log('**********');
-                
+                let nav = this.state.navigationActive;
+                this.setState({
+                    navigationActive: nav === 'cover-flow' ? 'music' 
+                        : nav === 'music' ? 'games' 
+                        : nav === 'games' ? 'settings' 
+                        : 'cover-flow',
+                    prevAngle: angle
+                });
+
             }
-        });
+        }.bind(this));
     }
     
 
     render() {
+
+        const { navigationActive } = this.state;
         
         return (
         
         <div className="App">
 
             <div className='ipod-container'>
-                <Menu/>
+                <Menu navigationActive={navigationActive}/>
                 <div className='wheel'>
                     <div className='inner-div'>
                     </div>
