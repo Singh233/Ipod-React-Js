@@ -10,11 +10,13 @@ $button-color-gray: #212121;  */
     grid-template-columns: 175px 175px;
     height: 350px;
     width: 350px;
-    border: 2px solid rgb(0, 0, 0);
-    
-    border-radius: 25px;
-    margin-bottom: 20px;
+    background-color: white;
 
+    border-radius: 40px;
+    margin-bottom: 20px;
+    background: #f5f5f5;
+    box-shadow: inset 5px 5px 10px #eaeaea,
+                inset -5px -5px 10px #ffffff;
 }
 
 .menu .nav-links {
@@ -25,26 +27,35 @@ $button-color-gray: #212121;  */
 }
 
 .menu .nav-links header, .cover-flow, .music, .games, .settings {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding-left: 10px;
-    border-radius: 15px;
+    border-radius: 20px;
     margin: 5px;
 }
 
 .menu .nav-links header {
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 
 .menu .right-display {
     display: flex;
-    background-image: url('https://images.unsplash.com/photo-1620121692029-d088224ddc74?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXBwbGUlMjB3YWxscGFwZXJ8ZW58MHx8MHx8&w=1000&q=80');
-    background-size: cover;
-    border-radius: 0 25px 25px 0;
-
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 0 40px 40px 0;
 }
 
 .active {
     background-color: #0057D2;
+    color: white;
+    font-weight: 600;
 }
+
+.header {
+    justify-content: flex-start;
+}
+
 

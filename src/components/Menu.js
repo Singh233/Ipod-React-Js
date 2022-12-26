@@ -1,5 +1,10 @@
 import '../styles/Menu.css';
 import React from 'react';
+import Music from './Music';
+import Games from './Games';
+import Settings from './Settings';
+import CoverFlow from './CoverFlow';
+import IpodDefault from './IpodDefault';
 
 
 class Menu extends React.Component {
@@ -8,33 +13,33 @@ class Menu extends React.Component {
     }
 
     render() {
-        const { navigationActive } = this.props;
-        return (
-            <div className="menu">
-                <div className="nav-links">
-                    <header> Ipod </header>
-                    <div className={`cover-flow ${navigationActive === 'cover-flow' ? 'active' : ''}`}>
-                        <p>Cover Flow</p>
-                    </div>
-
-                    <div className={`music ${navigationActive === 'music' ? 'active' : ''}`}>
-                        <p> Music </p>
-                    </div>
-
-                    <div className={`games ${navigationActive === 'games' ? 'active' : ''}`}>
-                        <p>Games</p>
-                    </div>
-
-                    <div className={`settings ${navigationActive === 'settings' ? 'active' : ''}`}>
-                        <p> Setting </p>
-                    </div>
-                </div>
-
-                <div className="right-display">
-                    <img src=''></img>
-                </div>
-            </div>
-        );
+        const { navigationActive , menuItem, menuChangeAnimation, coverDisplay } = this.props;
+        let component = menuItem;
+        console.log(menuItem);
+        
+        if (menuItem === 'Ipod') {
+            return (
+                <IpodDefault navigationActive={navigationActive} menuChangeAnimation={menuChangeAnimation} coverDisplay={coverDisplay} />
+            );
+        } else if (menuItem === 'Music' || menuItem === 'AllSongs' || menuItem === 'Artists' || menuItem === 'Albums') {
+            return (
+                <Music navigationActive={navigationActive} menuItem={menuItem} menuChangeAnimation={menuChangeAnimation} coverDisplay={coverDisplay}/>
+            );
+        } else if (menuItem === 'Games') {
+            return (
+                <Games navigationActive={navigationActive}/>
+            );
+        } else if (menuItem === 'Settings') {
+            return (
+                <Settings />
+            );
+        } else {
+            return (
+                <CoverFlow />
+            );
+        }
+        
+        
     }
 }
 

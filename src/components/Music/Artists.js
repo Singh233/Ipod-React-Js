@@ -1,20 +1,20 @@
-import '../styles/Music.css';
 import React from 'react';
 
 
-class CoverFlow extends React.Component {
+class Artists extends React.Component {
     constructor() {
         super();
     }
 
     render() {
+        const { navigationActive } = this.props;
         return (
             <div className="menu">
-                CoverFlow
+                Artists
             </div>
         );
     }
 }
 
 
-export default CoverFlow;
+export default Artists;

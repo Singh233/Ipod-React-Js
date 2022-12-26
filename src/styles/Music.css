@@ -1,0 +1,42 @@
+/* $button-color-blue: #0057D2; 
+$button-hover-color: #D1EFFF;
+$button-color-red: #D20A0A; 
+$text-color-gray: #d0d0d0; 
+$button-color-gray: #212121;  */
+
+
+.menu .nav-links {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px 20px 10px;
+    
+}
+
+.menu .nav-links header, .all-songs, .artists, .albums {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-left: 10px;
+    border-radius: 15px;
+    margin: 5px;
+    margin-top: 10px;
+}
+
+.menu .nav-links header {
+    font-size: 1.5rem;
+    font-weight: 600;
+    justify-content: flex-start;
+}
+
+
+.menu .right-display {
+    display: flex;
+
+}
+
+.active {
+    background-color: #0070F2;
+}
+
+
