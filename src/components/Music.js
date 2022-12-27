@@ -16,10 +16,10 @@ class Music extends React.Component {
     render() {
         console.log(this.props)
 
-        const { navigationActive, menuItem, menuChangeAnimation, coverDisplay} = this.props;
+        const { navigationActive, menuItem, menuChangeAnimation, coverDisplay, song} = this.props;
         if (menuItem === 'AllSongs') {
             return (
-                <AllSongs navigationActive={navigationActive} />
+                <AllSongs navigationActive={navigationActive} song={song} />
             );
         } else if (menuItem === 'Artists') {
 

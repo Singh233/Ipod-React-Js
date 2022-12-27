@@ -13,7 +13,6 @@ class IpodDefault extends React.Component {
 
     render() {
         const { navigationActive , menuItem, menuChangeAnimation, coverDisplay } = this.props;       
-        console.log(coverDisplay); 
         return (
             <div className="menu">
                 <div className="nav-links">

@@ -13,7 +13,7 @@ class Menu extends React.Component {
     }
 
     render() {
-        const { navigationActive , menuItem, menuChangeAnimation, coverDisplay } = this.props;
+        const { navigationActive , menuItem, menuChangeAnimation, coverDisplay, song } = this.props;
         let component = menuItem;
         console.log(menuItem);
         
@@ -23,7 +23,7 @@ class Menu extends React.Component {
             );
         } else if (menuItem === 'Music' || menuItem === 'AllSongs' || menuItem === 'Artists' || menuItem === 'Albums') {
             return (
-                <Music navigationActive={navigationActive} menuItem={menuItem} menuChangeAnimation={menuChangeAnimation} coverDisplay={coverDisplay}/>
+                <Music navigationActive={navigationActive} menuItem={menuItem} menuChangeAnimation={menuChangeAnimation} coverDisplay={coverDisplay} song={song}/>
             );
         } else if (menuItem === 'Games') {
             return (

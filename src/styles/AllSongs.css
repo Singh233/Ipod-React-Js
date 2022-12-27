@@ -1,0 +1,106 @@
+
+
+
+.song-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 350px;
+    width: 350px;
+
+    border-radius: 40px;
+    margin-bottom: 20px;
+    background: rgb(26,121,205);
+    background: linear-gradient(202deg, rgba(26, 121, 205, 0.85) 15%, rgba(245, 33, 75, 0.655) 100%, rgba(5,5,5,1) 100%);
+
+}
+
+
+.song-container .header {
+    height: 20px;
+}
+
+.song-container .cover-img {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.889);
+}
+
+.song-container .cover-img img {
+    height: 170px;
+    width: 170px;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 8px 24px;
+
+}
+
+
+.song-container .music-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+}
+
+.song-container .music-controls .song-name {
+    color: white;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.song-container .music-controls .artist-name {
+    color: white;
+    margin: 0;
+    margin-bottom: 0px;
+
+}
+
+.progress-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    
+}
+
+.progress-container .time {
+    justify-self: flex-end;
+}
+
+.progress-container .progress-bar {
+    margin-left: 7px;
+    margin-right: 7px;
+    border-radius: 7px;
+    height: 7px;
+    width: 200px;
+    background-color: rgba(0, 0, 0, 0.254);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.progress-container .progress-bar .progress-done {
+    border-radius: 7px 0px 0 7px;
+    height: 7px;
+    width: 20%;
+    background-color: rgba(255, 255, 255, 0.907);
+}
+
+.progress-container p {
+    color: rgba(255, 255, 255, 0.907);
+    font-size: 0.8rem;
+}
+
+
+.song-container .song-buttons {
+    width: 80%;
+    display: flex;
+    color: rgba(255, 255, 255, 0.874);
+    font-size: 2rem;
+    justify-content: space-around;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

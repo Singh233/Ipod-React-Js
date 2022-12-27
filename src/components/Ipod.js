@@ -1,6 +1,7 @@
 
 import ZingTouch from 'zingtouch';
 
+import song from '../songs/udd_gaye.mp3';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faForward } from "@fortawesome/free-solid-svg-icons";
@@ -16,6 +17,7 @@ class Ipod extends React.Component {
 
     constructor() {
         super();
+        this.audio = new Audio(song);
         this.state = {
             menuItem: 'Ipod',
             navigationActive: 'Music',
@@ -25,8 +27,15 @@ class Ipod extends React.Component {
                 url: 'url("https://9to5mac.com/wp-content/uploads/sites/6/2021/08/apple-music-logo-2021-9to5mac.jpg?quality=82&strip=all&w=1000")',
                 bgColor: '#FB223C',
                 bgSize: 'contain'
+            },
+            song: {
+                play: false,
+                intervalId: '',
+                timelapsed: 0,
             }
         }
+
+        
     }
 
     componentDidMount() {
@@ -34,7 +43,7 @@ class Ipod extends React.Component {
         let activeRegion = ZingTouch.Region(wheel);
 
         activeRegion.bind(wheel, 'rotate', function(event) {
-            console.log(event.detail);
+            
             console.log();
 
             // let angleChanged = event.detail.angle - event.detail.distanceFromLast;
@@ -207,18 +216,93 @@ class Ipod extends React.Component {
             })
         }
     }
+
+
+    // function for pause and play music
+
+    playOrPause = () => {
+        const {play} = this.state.song;
+        console.log("play pause", play);
+        // this.setState({
+        //     song: {
+        //         play: !play
+        //     }
+        // }, () => {
+        //     if (this.state.song.play) {
+        //         this.audio.play();
+        //         let intervalId = setInterval(() => {
+        //             console.log('playing');
+        //         }, 1000);
+        //         this.setState({
+        //             song: {
+        //                 intervalId: intervalId
+        //             }
+        //         });
+        //     } else {
+        //         this.audio.pause();
+        //         clearInterval(this.state.song.intervalId);
+        //     }
+        // });
+
+        let intervalId = setInterval(() => {
+            if (this.audio.paused) {
+                console.log("stop")
+                clearInterval(intervalId);
+            } else {
+                const {song} = this.state;
+                // console.log(song);
+                // const elapse = new Date().getTime();
+                // let now = new Date().getTime();
+                // var distance = (elapse + 180000) - now;
+                let count2 = song.timelapsed;
+                let minutes = Math.floor(count2 / 60);
+                // let minutes = Math.floor((count2 % (1000 * 60 * 60)) / (1000 * 60));
+                // let seconds = Math.floor((count2 % (1000 * 60)) / 1000);
+                let count1 = 0;
+                this.setState({
+                    song: {
+                        timelapsed: count2 + 1,
+                        intervalId: intervalId,
+                        play: true
+                    }
+                }, () => console.log("playing", Math.floor(count2 / 60), (count2 - (minutes * 60))));
+                
+            }
+        }, 1000);
+        const {song} = this.state;
+
+        this.setState({
+            song: {
+                play: !play,
+                timelapsed: song.timelapsed,
+                intervalId: intervalId
+            }
+        }, () => {
+            if (this.state.song.play) {
+                this.audio.play();
+            } else {
+                clearInterval(intervalId);
+
+                this.audio.pause();
+            }
+        });
+
+        
+        
+
+    }
     
 
     render() {
 
-        const { navigationActive, menuItem, menuChangeAnimation, coverDisplay } = this.state;
+        const { navigationActive, menuItem, menuChangeAnimation, coverDisplay, song } = this.state;
         
         return (
         
         <div className="App">
 
             <div className='ipod-container'>
-                <Menu navigationActive={navigationActive} menuItem={menuItem} menuChangeAnimation={menuChangeAnimation} coverDisplay={coverDisplay} />
+                <Menu navigationActive={navigationActive} menuItem={menuItem} menuChangeAnimation={menuChangeAnimation}  coverDisplay={coverDisplay} song={song} />
                 <div className='wheel'>
                     <div className='inner-div' onClick={this.optionSelect} >
                     </div>
@@ -226,7 +310,7 @@ class Ipod extends React.Component {
                         <p className='menu-button' onClick={this.menuSelect}><FontAwesomeIcon icon={faBarsStaggered}/></p>
                         <p className='forward-button'><FontAwesomeIcon icon={faForward}/></p>
                         <p className='backward-button'><FontAwesomeIcon icon={faBackward}/></p>
-                        <p className='pause-button'><FontAwesomeIcon icon={faPlay}/> <FontAwesomeIcon icon={faPause}/></p>
+                        <p onClick={this.playOrPause} className='pause-button'><FontAwesomeIcon icon={faPlay}/> <FontAwesomeIcon icon={faPause}/></p>
                     </div>
                 </div>
 
