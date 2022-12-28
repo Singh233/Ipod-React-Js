@@ -9,7 +9,7 @@ import { faBackward } from "@fortawesome/free-solid-svg-icons";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { faPause } from "@fortawesome/free-solid-svg-icons";
 import { faBarsStaggered } from "@fortawesome/free-solid-svg-icons";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
 import React from 'react';
 import Menu from './Menu';
 
@@ -42,6 +42,8 @@ class Ipod extends React.Component {
         let wheel = document.querySelector('.wheel');
         let activeRegion = ZingTouch.Region(wheel);
 
+
+        
         activeRegion.bind(wheel, 'rotate', function(event) {
             
             console.log();
@@ -140,7 +142,7 @@ class Ipod extends React.Component {
                             url: 'url("https://9to5mac.com/wp-content/uploads/sites/6/2020/02/Apple-Arcade.png")',
                             bgColor: '#020202',
                             bgSize: 'contain'
-                        }   ,
+                        },
 
                     });
                 } else if (menuItem === 'Music') {
@@ -221,32 +223,16 @@ class Ipod extends React.Component {
     // function for pause and play music
 
     playOrPause = () => {
+        this.setState({
+            menuItem: 'AllSongs',
+            navigationActive: 'AllSongs'
+        });
         const {play} = this.state.song;
         console.log("play pause", play);
-        // this.setState({
-        //     song: {
-        //         play: !play
-        //     }
-        // }, () => {
-        //     if (this.state.song.play) {
-        //         this.audio.play();
-        //         let intervalId = setInterval(() => {
-        //             console.log('playing');
-        //         }, 1000);
-        //         this.setState({
-        //             song: {
-        //                 intervalId: intervalId
-        //             }
-        //         });
-        //     } else {
-        //         this.audio.pause();
-        //         clearInterval(this.state.song.intervalId);
-        //     }
-        // });
 
         let intervalId = setInterval(() => {
             if (this.audio.paused) {
-                console.log("stop")
+                console.log("stop");
                 clearInterval(intervalId);
             } else {
                 const {song} = this.state;
@@ -291,6 +277,33 @@ class Ipod extends React.Component {
         
 
     }
+
+
+    // function for on click of backward button 
+    back = () => {
+
+        if (this.state.song.play) {
+            this.audio.load();
+            this.audio.play();
+            this.setState({
+                song: {
+                    play: this.state.song.play,
+                    timelapsed: 0,
+                    intervalId: ''
+                }
+            });
+        } else {
+            this.audio.load();
+            this.setState({
+                song: {
+                    play: this.state.song.play,
+                    timelapsed: 0,
+                    intervalId: ''
+                }
+            });
+        }
+
+    }
     
 
     render() {
@@ -309,13 +322,29 @@ class Ipod extends React.Component {
                     <div className='buttons'>
                         <p className='menu-button' onClick={this.menuSelect}><FontAwesomeIcon icon={faBarsStaggered}/></p>
                         <p className='forward-button'><FontAwesomeIcon icon={faForward}/></p>
-                        <p className='backward-button'><FontAwesomeIcon icon={faBackward}/></p>
+                        <p onClick={this.back} className='backward-button'><FontAwesomeIcon icon={faBackward}/></p>
                         <p onClick={this.playOrPause} className='pause-button'><FontAwesomeIcon icon={faPlay}/> <FontAwesomeIcon icon={faPause}/></p>
                     </div>
                 </div>
 
                 <img className='icon' style={{marginBottom: 20}} src='https://cdn-icons-png.flaticon.com/512/731/731985.png'></img>
                 <p className='icon-text'>Designed in India</p>
+            </div>
+
+            <div className="card">
+                <div className="header">
+                    <div className="img-box">
+                        <FontAwesomeIcon style={{fontSize: 20}} icon={faTriangleExclamation}/>
+                    </div>
+                    <h1 className="title">Warning</h1>
+                </div>
+
+                <div className="content">
+                    <p>
+                        Network required to load images
+                    </p>
+
+                </div>
             </div>
             
         </div>

@@ -9,7 +9,7 @@ class CoverFlow extends React.Component {
 
     render() {
         return (
-            <div className="menu">
+            <div className="menu text-deco">
                 CoverFlow
             </div>
         );

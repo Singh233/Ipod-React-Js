@@ -10,7 +10,7 @@ class Games extends React.Component {
     render() {
         const { navigationActive } = this.props;
         return (
-            <div className="menu">
+            <div className="menu text-deco">
                 Games
             </div>
         );

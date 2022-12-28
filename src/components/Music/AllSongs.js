@@ -7,8 +7,9 @@ import { faForward } from "@fortawesome/free-solid-svg-icons";
 import { faBackward } from "@fortawesome/free-solid-svg-icons";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { faPause } from "@fortawesome/free-solid-svg-icons";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { faHeadphonesSimple } from "@fortawesome/free-solid-svg-icons";
+import { faPodcast } from "@fortawesome/free-solid-svg-icons";
+import {  } from "@fortawesome/free-solid-svg-icons";
 
 class AllSongs extends React.Component {
     constructor() {
@@ -40,12 +41,11 @@ class AllSongs extends React.Component {
                     {/* <FontAwesomeIcon icon={faChevronLeft}/> */}
                     <img src='https://i.scdn.co/image/ab67616d0000b2730c3c9fa1d5d9d7770d897f2a' />
                     {/* <FontAwesomeIcon icon={faChevronRight}/> */}
-
                 </div>
 
                 <div className='music-controls'>
-                    <p className='song-name'>Udd Gaye</p>
-                    <p className='artist-name'>Ritviz</p>
+                    <p className='song-name'><FontAwesomeIcon className='song-icon' icon={faHeadphonesSimple}/> Udd Gaye</p>
+                    <p className='artist-name'><FontAwesomeIcon  icon={faPodcast}/> &nbsp;Ritviz</p>
                     <div className='progress-container'>
                         <p className='time'>{minutes}:{seconds < 10 ? '0' + seconds : seconds}</p>
                         <div className='progress-bar'>
@@ -59,7 +59,7 @@ class AllSongs extends React.Component {
 
                     <div className='song-buttons'>
                         <FontAwesomeIcon icon={faBackward}/>
-                        <FontAwesomeIcon icon={faPause}/>
+                        <FontAwesomeIcon className='' icon={song.play ? faPause : faPlay}/>
                         <FontAwesomeIcon icon={faForward}/>
                         
                         

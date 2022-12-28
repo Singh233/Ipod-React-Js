@@ -9,7 +9,7 @@ class Settings extends React.Component {
 
     render() {
         return (
-            <div className="menu">
+            <div className="menu text-deco">
                 Settings
             </div>
         );
